@@ -1,8 +1,21 @@
 {
   "name": "keystone-healthchecks",
+  "description": "Healthchecks Framework for KeystoneJS (or any Express app)",
   "version": "0.0.0",
   "main": "src/index.js",
   "license": "MIT",
+  "author": "Jacob Bass",
+  "homepage": "https://github.com/keystonejs/keystone-healthchecks#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keystonejs/keystone-healthchecks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/keystonejs/keystone-healthchecks/issues"
+  },
+  "directories": {
+    "test": "test"
+  },
   "dependencies": {
     "glob": "7.1.1",
     "lodash": "4.17.4"
@@ -14,5 +27,12 @@
   },
   "scripts": {
     "test": "mocha 'test/**/*.test.js'"
-  }
+  },
+  "keywords": [
+    "express",
+    "keystonejs",
+    "monitoring",
+    "webserver",
+    "middleware"
+  ]
 }
