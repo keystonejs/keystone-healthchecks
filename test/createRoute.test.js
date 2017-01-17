@@ -8,7 +8,7 @@ const {
 	SuccessfulImmediateCheck,
 } = require('./fixtures/healthchecks');
 
-describe('HealthCheckRoute', function () {
+describe('createRoute', function () {
 	describe('Route', function () {
 		context('when at least one of the healthchecks fails', function () {
 			beforeEach(function () {
@@ -28,7 +28,7 @@ describe('HealthCheckRoute', function () {
 							const parsed = JSON.parse(res.text);
 							assert.deepEqual(parsed, {
 								healthy: false,
-								data: [
+								healthchecks: [
 									{
 										name: 'FailureImmediateCheck',
 										healthy: false,
@@ -51,7 +51,7 @@ describe('HealthCheckRoute', function () {
 						.expect(res => {
 							assert.deepEqual(res.body, {
 								healthy: false,
-								data: [
+								healthchecks: [
 									{
 										name: 'FailureImmediateCheck',
 										healthy: false,
@@ -74,7 +74,7 @@ describe('HealthCheckRoute', function () {
 						.expect(res => {
 							assert.deepEqual(res.body, {
 								healthy: false,
-								data: [
+								healthchecks: [
 									{
 										name: 'FailureImmediateCheck',
 										healthy: false,
@@ -106,7 +106,7 @@ describe('HealthCheckRoute', function () {
 							const parsed = JSON.parse(res.text);
 							assert.deepEqual(parsed, {
 								healthy: true,
-								data: [
+								healthchecks: [
 									{
 										name: 'SuccessfulImmediateCheck',
 										healthy: true,
@@ -129,7 +129,7 @@ describe('HealthCheckRoute', function () {
 						.expect(res => {
 							assert.deepEqual(res.body, {
 								healthy: true,
-								data: [
+								healthchecks: [
 									{
 										name: 'SuccessfulImmediateCheck',
 										healthy: true,
@@ -152,7 +152,7 @@ describe('HealthCheckRoute', function () {
 						.expect(res => {
 							assert.deepEqual(res.body, {
 								healthy: true,
-								data: [
+								healthchecks: [
 									{
 										name: 'SuccessfulImmediateCheck',
 										healthy: true,

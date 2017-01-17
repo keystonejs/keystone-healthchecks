@@ -23,7 +23,7 @@ describe('Runner', function () {
 				return runner
 					.run()
 					.then(results => {
-						assert.deepEqual(results, { healthy: true, data: [] });
+						assert.deepEqual(results, { healthy: true, healthchecks: [] });
 					});
 			});
 		});
@@ -40,7 +40,7 @@ describe('Runner', function () {
 					.then(results => {
 						assert.deepEqual(results, {
 							healthy: false,
-							data: [
+							healthchecks: [
 								{ name: 'FailureCheck', healthy: false, data: 'OK' },
 								{ name: 'FailureCheck', healthy: false, data: 'OK' },
 							],
@@ -61,7 +61,7 @@ describe('Runner', function () {
 					.then(results => {
 						assert.deepEqual(results, {
 							healthy: false,
-							data: [
+							healthchecks: [
 								{ name: 'FailureCheck', healthy: false, data: 'OK' },
 								{ name: 'SuccessCheck', healthy: true, data: 'OK' },
 							],
@@ -82,7 +82,7 @@ describe('Runner', function () {
 					.then(results => {
 						assert.deepEqual(results, {
 							healthy: true,
-							data: [
+							healthchecks: [
 								{ name: 'SuccessCheck', healthy: true, data: 'OK' },
 								{ name: 'SuccessCheck', healthy: true, data: 'OK' },
 							],

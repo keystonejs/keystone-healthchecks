@@ -2,7 +2,7 @@ class Formatter {
 	defaultResponse () {
 		return {
 			healthy: true,
-			data: [],
+			healthchecks: [],
 		};
 	}
 
@@ -19,7 +19,7 @@ class Formatter {
 	constructResponse (response, check) {
 		const result = this.constructCheckResult(check);
 		response.healthy = response.healthy && check.healthy;
-		response.data.push(result);
+		response.healthchecks.push(result);
 
 		return response;
 	}

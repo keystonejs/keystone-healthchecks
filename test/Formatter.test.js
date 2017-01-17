@@ -12,7 +12,7 @@ describe('Formatter', function () {
 				]);
 				const expected = {
 					healthy: false,
-					data: [
+					healthchecks: [
 						{ name: 'fail1', healthy: false, data: {} },
 						{ name: 'pass1', healthy: true, data: {} },
 					],
@@ -31,7 +31,7 @@ describe('Formatter', function () {
 				]);
 				const expected = {
 					healthy: true,
-					data: [
+					healthchecks: [
 						{ name: 'pass1', healthy: true, data: {} },
 						{ name: 'pass2', healthy: true, data: {} },
 					],
