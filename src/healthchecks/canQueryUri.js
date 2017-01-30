@@ -21,6 +21,7 @@ module.exports = class canQueryUri extends Healthcheck {
 				return reject({
 					status: res.status,
 					data: res.data,
+					uri: this.uri,
 				});
 			})
 			// http and https treat an inability to hit the server or timeouts
@@ -28,7 +29,8 @@ module.exports = class canQueryUri extends Healthcheck {
 			// the callback. This hook handles this.
 			.on('error', (err) => {
 				return reject({
-					data: err,
+					error: err,
+					uri: this.uri,
 				});
 			});
 		});
