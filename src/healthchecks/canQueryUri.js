@@ -1,6 +1,7 @@
 const Healthcheck = require('../Healthcheck');
 const http = require('http');
 const https = require('https');
+const url = require('url');
 
 
 module.exports = class canQueryUri extends Healthcheck {
@@ -13,7 +14,7 @@ module.exports = class canQueryUri extends Healthcheck {
 	}
 
 	resolver () {
-		const client = /^https:\/\//.test(this.uri) ? https : http;
+		const client = (url.parse(this.uri).protocol === 'https:') ? https : http;
 
 		return new Promise((resolve, reject) => {
 			client.get(this.uri, res => {
