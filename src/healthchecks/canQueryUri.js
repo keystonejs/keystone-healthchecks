@@ -10,7 +10,7 @@ module.exports = class canQueryUri extends Healthcheck {
 	}
 
 	get timeout () {
-		return 500;
+		return 3000;
 	}
 
 	resolver () {
