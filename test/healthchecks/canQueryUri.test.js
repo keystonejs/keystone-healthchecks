@@ -16,9 +16,9 @@ function createHandleRequest (statusCode) {
 
 describe('CanQueryUri', function () {
 	describe('#timeout', function () {
-		it('has a timeout of 1000ms', function () {
+		it('has a timeout of 3000ms', function () {
 			const healthcheck = new CanQueryUri();
-			assert.equal(healthcheck.timeout, 1000);
+			assert.equal(healthcheck.timeout, 3000);
 		});
 	});
 	describe('#resolver', function () {
@@ -61,8 +61,9 @@ describe('CanQueryUri', function () {
 			const healthcheck = new Healthcheck();
 			return healthcheck
 			.resolver()
-			.catch(msg => {
-				assert.equal(typeof msg.data, 'object')
+			.catch(data => {
+				assert.equal('http://localhost:3001/', data.url);
+				assert.equal(typeof data.error, 'object')
 			});
 		});
 		context('when the uri resolves with not 200', function () {
@@ -86,9 +87,10 @@ describe('CanQueryUri', function () {
 				const healthcheck = new Healthcheck();
 				return healthcheck
 				.resolver()
-				.catch(msg => {
-					assert.equal(msg.status, 500);
-					assert.equal(typeof msg.data, 'object')
+				.catch(data => {
+					assert.equal(data.status, '500 Internal Server Error');
+					assert.equal(typeof data.body, 'string')
+					assert.equal(data.uri, 'http://localhost:3001/')
 				});
 			});
 		});
