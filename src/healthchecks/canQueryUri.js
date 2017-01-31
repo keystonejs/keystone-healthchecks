@@ -19,10 +19,15 @@ module.exports = class canQueryUri extends Healthcheck {
 		return new Promise((resolve, reject) => {
 			client.get(this.uri, res => {
 				if (res.statusCode === 200) return resolve(`${this.siteName} is available`);
-				return reject({
-					status: res.status,
-					data: res.data,
-					uri: this.uri,
+				
+				var body = '';
+		        res.on('data', (chunk) => body += chunk);
+				res.on('end', () => {
+					return reject({
+						status: `${res.statusCode} ${res.statusMessage}`,
+						body: body,
+						uri: this.uri,
+					});
 				});
 			})
 			// http and https treat an inability to hit the server or timeouts
