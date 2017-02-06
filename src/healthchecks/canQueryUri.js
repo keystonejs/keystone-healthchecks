@@ -6,6 +6,7 @@ const url = require('url');
 
 module.exports = class canQueryUri extends Healthcheck {
 	constructor (timeout) {
+		super();
 		this.timeout = timeout || 3000;
 	}
 	
