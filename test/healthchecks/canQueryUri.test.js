@@ -90,7 +90,6 @@ describe('CanQueryUri', function () {
 				return healthcheck
 					.resolver()
 					.catch(data => {
-						console.log('catching the resolver');
 						assert.equal(data.status, '500 Internal Server Error');
 						assert.equal(data.uri, 'http://localhost:3001/')
 					});
