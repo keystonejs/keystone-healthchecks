@@ -3,8 +3,7 @@ const http = require('http');
 const https = require('https');
 const url = require('url');
 
-
-module.exports = class canQueryUri extends Healthcheck {
+module.exports = class CanQueryUri extends Healthcheck {
 	constructor (timeout) {
 		super();
 		this.timeout = timeout || 3000;
