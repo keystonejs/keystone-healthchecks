@@ -1,4 +1,4 @@
-const canQueryUri = require('./canQueryUri');
+const CanQueryUri = require('./CanQueryUri');
 
 module.exports = function canQueryUriFactory (uri, siteName, timeout) {
 	return class CanQueryUriImpl extends canQueryUri {
