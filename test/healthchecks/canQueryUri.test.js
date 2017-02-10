@@ -49,21 +49,23 @@ describe('CanQueryUri', function () {
 			});
 		});
 		context('when the uri does not resolve', function () {
-			class Healthcheck extends CanQueryUri {
-				get siteName () {
-					return 'fake site name'
+			it('should notify that it could not connect', function () {
+				class Healthcheck extends CanQueryUri {
+					get siteName () {
+						return 'fake site name'
+					}
+					get uri () {
+						return 'http://localhost:3001/'
+					}
 				}
-				get uri () {
-					return 'http://localhost:3001/'
-				}
-			}
 
-			const healthcheck = new Healthcheck();
-			return healthcheck
-			.resolver()
-			.catch(data => {
-				assert.equal('http://localhost:3001/', data.url);
-				assert.equal(typeof data.error, 'object')
+				const healthcheck = new Healthcheck();
+				return healthcheck
+					.resolver()
+					.catch(data => {
+						assert.equal('http://localhost:3001/', data.uri);
+						assert.equal(typeof data.error, 'object')
+					});
 			});
 		});
 		context('when the uri resolves with not 200', function () {
@@ -86,12 +88,12 @@ describe('CanQueryUri', function () {
 
 				const healthcheck = new Healthcheck();
 				return healthcheck
-				.resolver()
-				.catch(data => {
-					assert.equal(data.status, '500 Internal Server Error');
-					assert.equal(typeof data.body, 'string')
-					assert.equal(data.uri, 'http://localhost:3001/')
-				});
+					.resolver()
+					.catch(data => {
+						console.log('catching the resolver');
+						assert.equal(data.status, '500 Internal Server Error');
+						assert.equal(data.uri, 'http://localhost:3001/')
+					});
 			});
 		});
 	});
