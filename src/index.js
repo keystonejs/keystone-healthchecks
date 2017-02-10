@@ -4,5 +4,7 @@ module.exports = {
 	healthchecks: {
 		CanQueryList: require('./healthchecks/CanQueryList'),
 		canQueryListFactory: require('./healthchecks/canQueryListFactory'),
+		CanQueryUri: require('./healthchecks/CanQueryUri'),
+		canQueryUriFactory: require('./healthchecks/canQueryUriFactory'),
 	}
 };
