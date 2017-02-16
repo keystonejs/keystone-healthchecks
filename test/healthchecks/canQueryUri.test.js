@@ -11,7 +11,7 @@ function createHandleRequest (statusCode) {
 			something: true,
 			somethingElse: 'false',
 		}));
-	}
+	};
 }
 
 describe('CanQueryUri', function () {
@@ -33,10 +33,10 @@ describe('CanQueryUri', function () {
 			it('uses sitename in label success string', function () {
 				class Healthcheck extends CanQueryUri {
 					get siteName () {
-						return 'fake site name'
+						return 'fake site name';
 					}
 					get uri () {
-						return 'http://localhost:3001/'
+						return 'http://localhost:3001/';
 					}
 				}
 				const healthcheck = new Healthcheck();
@@ -44,7 +44,7 @@ describe('CanQueryUri', function () {
 				return healthcheck
 					.resolver()
 					.then(msg => {
-						assert.equal('fake site name is available', msg)
+						assert.equal('fake site name is available', msg);
 					});
 			});
 		});
@@ -52,10 +52,10 @@ describe('CanQueryUri', function () {
 			it('should notify that it could not connect', function () {
 				class Healthcheck extends CanQueryUri {
 					get siteName () {
-						return 'fake site name'
+						return 'fake site name';
 					}
 					get uri () {
-						return 'http://localhost:3001/'
+						return 'http://localhost:3001/';
 					}
 				}
 
@@ -64,7 +64,7 @@ describe('CanQueryUri', function () {
 					.resolver()
 					.catch(data => {
 						assert.equal('http://localhost:3001/', data.uri);
-						assert.equal(typeof data.error, 'object')
+						assert.equal(typeof data.error, 'object');
 					});
 			});
 		});
@@ -79,10 +79,10 @@ describe('CanQueryUri', function () {
 			it('resolves with a message', function () {
 				class Healthcheck extends CanQueryUri {
 					get siteName () {
-						return 'fake site name'
+						return 'fake site name';
 					}
 					get uri () {
-						return 'http://localhost:3001/'
+						return 'http://localhost:3001/';
 					}
 				}
 
@@ -91,7 +91,7 @@ describe('CanQueryUri', function () {
 					.resolver()
 					.catch(data => {
 						assert.equal(data.status, '500 Internal Server Error');
-						assert.equal(data.uri, 'http://localhost:3001/')
+						assert.equal(data.uri, 'http://localhost:3001/');
 					});
 			});
 		});

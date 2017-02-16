@@ -6,5 +6,5 @@ module.exports = {
 		canQueryListFactory: require('./healthchecks/canQueryListFactory'),
 		CanQueryUri: require('./healthchecks/CanQueryUri'),
 		canQueryUriFactory: require('./healthchecks/canQueryUriFactory'),
-	}
+	},
 };

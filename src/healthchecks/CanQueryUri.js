@@ -28,7 +28,7 @@ module.exports = class CanQueryUri extends Healthcheck {
 						status: `${res.statusCode} ${res.statusMessage}`,
 						uri: this.uri,
 					});
-				})
+				});
 			}).on('error', (err) => {
 				// http and https treat an inability to hit the server or timeouts
 				// differently so they throw an error instead of being passed to
