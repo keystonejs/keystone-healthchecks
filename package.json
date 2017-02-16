@@ -23,7 +23,7 @@
   "devDependencies": {
     "express": "^4.14.0",
     "mocha": "3.2.0",
-    "supertest": "^2.0.1"
+    "supertest": "^3.0.0"
   },
   "scripts": {
     "test": "mocha 'test/**/*.test.js'"
